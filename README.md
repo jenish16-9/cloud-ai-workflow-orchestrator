@@ -1,11 +1,56 @@
-# AI-Enhanced CI/CD Workflow Orchestrator
+# Cloud-Based AI Workflow Orchestrator
 
-Production-style full-stack starter for automating GitHub-based build, test, security, container, and AWS deployment pipelines.
+### Event-Driven Infrastructure for Reliable AI Workflows
 
-## Run locally
+A cloud-native orchestration platform for designing, scheduling, and executing
+multi-step AI workflows across distributed workers.
 
-1. Copy `.env.example` to `.env`.
-2. Run `docker compose up --build`.
-3. Open the dashboard at `http://localhost:3000` or API docs at `http://localhost:8000/docs`.
+The system combines asynchronous task processing, LLM-guided pipeline control,
+fault-tolerant messaging, observability, and cloud-ready deployment patterns.
 
-The local profile uses Redis and a Redis-backed repository. Set `QUEUE_BACKEND=sqs`, `AWS_REGION`, and `SQS_QUEUE_URL` for AWS queueing. Set `PIPELINE_EXECUTION_MODE=docker` to run pipeline commands; the default `simulated` mode is safe for local demonstrations. GitHub push events can call `/api/v1/webhooks/github`. LangSmith variables are included for tracing and Prometheus metrics are exposed at `/metrics`.
+> This project demonstrates how AI workloads can be coordinated reliably beyond
+> a single chatbot or synchronous API request.
+
+## Why This Project?
+
+AI applications often require multiple dependent steps:
+
+1. Understand the request
+2. Select the appropriate workflow
+3. Prioritize context
+4. Execute tasks in parallel
+5. Recover from failures
+6. Monitor performance
+7. Return a traceable result
+
+The Cloud-Based AI Workflow Orchestrator manages this process through distributed
+workers, asynchronous queues, and observable execution states.
+
+## Core Capabilities
+
+- Multi-step asynchronous AI workflow execution
+- Autonomous workflow scheduling
+- Parallel task processing across workers
+- LLM-guided pipeline control and task routing
+- Context prioritization for AI requests
+- Redis-backed task coordination
+- Celery-based distributed workers
+- AWS SQS messaging support
+- Retry and failure-recovery handling
+- Worker-health monitoring
+- Prometheus metrics for latency and throughput
+- LangSmith tracing for AI workflow debugging
+- Dockerized local development
+- AWS-ready deployment architecture
+
+## System Architecture
+
+```mermaid
+flowchart LR
+    A[Client Request] --> B[FastAPI API]
+    B --> C[Workflow Planner]
+    C --> D[Redis or AWS SQS]
+    D --> E[Celery Workers]
+    E --> F[OpenAI Pipeline]
+    F --> G[Result and Metrics]
+    G --> H[LangSmith and Prometheus]
